@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "functions": {
+    "api/speech": {
+      "maxDuration": 10
+    },
+    "api/whisper": {
+      "maxDuration": 10
+    }
+  }
+} 
