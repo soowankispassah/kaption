@@ -1,11 +1,10 @@
 {
-  "version": 2,
   "functions": {
-    "app/api/speech/route": {
-      "maxDuration": 60
+    ".next/server/app/api/speech/route.js": {
+      "maxDuration": 10
     },
-    "app/api/whisper/route": {
-      "maxDuration": 60
+    ".next/server/app/api/whisper/route.js": {
+      "maxDuration": 10
     }
   }
 } 
