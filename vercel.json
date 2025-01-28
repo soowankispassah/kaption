@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "functions": {
+    "api/speech/*.ts": {
+      "maxDuration": 60
+    },
+    "api/whisper/*.ts": {
+      "maxDuration": 60
+    }
+  }
+} 
