@@ -1,9 +1,6 @@
 {
   "functions": {
-    ".next/server/app/api/speech/route.js": {
-      "maxDuration": 10
-    },
-    ".next/server/app/api/whisper/route.js": {
+    "api/**/*.js": {
       "maxDuration": 10
     }
   }
