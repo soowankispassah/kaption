@@ -1,8 +1,17 @@
 {
   "version": 2,
   "functions": {
-    ".next/server/app/api/**/*": {
-      "maxDuration": 10
+    "api/**/*": {
+      "maxDuration": 30
     }
+  },
+  "routes": [
+    {
+      "source": "/api/(.*)",
+      "destination": "/api/$1"
+    }
+  ],
+  "env": {
+    "NEXT_PUBLIC_APP_URL": "@next_public_app_url"
   }
 } 
