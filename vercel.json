@@ -1,7 +1,7 @@
 {
   "version": 2,
   "functions": {
-    ".next/server/app/api/**/route.js": {
+    "app/api/*/route": {
       "maxDuration": 10
     }
   }
