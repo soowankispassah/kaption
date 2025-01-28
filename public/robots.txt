@@ -1,0 +1,12 @@
+# Allow all crawlers
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://your-domain.vercel.app/sitemap.xml
+
+# Prevent crawling of API routes
+Disallow: /api/
+
+# Rate limiting for crawlers
+Crawl-delay: 1 

@@ -1,36 +1,120 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Live Translation App
 
-## Getting Started
+A real-time speech-to-text translation application that supports multiple languages. The app transcribes speech in real-time and provides instant translations.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- Real-time speech-to-text transcription
+- Instant translation to multiple languages (English, Hindi, Khasi)
+- Mobile-responsive design
+- Live mode and history viewing
+- Error handling and retry mechanisms
+- Fullscreen and expanded view modes (desktop only)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Tech Stack
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- Next.js 14 (App Router)
+- TypeScript
+- Tailwind CSS
+- Google Gemini AI for translations
+- Web Speech API for audio processing
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Prerequisites
 
-## Learn More
+Before you begin, ensure you have:
 
-To learn more about Next.js, take a look at the following resources:
+- Node.js 18.x or later
+- A Google Gemini API key
+- npm or yarn package manager
+- Git for version control
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Local Development
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. Clone the repository:
+   ```bash
+   git clone <repository-url>
+   cd <repository-name>
+   ```
 
-## Deploy on Vercel
+2. Install dependencies:
+   ```bash
+   npm install
+   # or
+   yarn install
+   ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+3. Copy the example environment file:
+   ```bash
+   cp .env.example .env.local
+   ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+4. Update the environment variables in `.env.local` with your values:
+   - Add your Gemini API key
+   - Update the NEXT_PUBLIC_APP_URL if needed
+
+5. Run the development server:
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   ```
+
+## Deployment to Vercel
+
+1. Push your code to a Git repository (GitHub, GitLab, or Bitbucket)
+
+2. Connect your repository to Vercel:
+   - Go to [Vercel](https://vercel.com)
+   - Click "New Project"
+   - Import your repository
+   - Select the repository owner
+   - Configure project settings:
+     - Framework Preset: Next.js
+     - Root Directory: ./
+     - Build Command: next build
+     - Output Directory: .next
+
+3. Add Environment Variables:
+   - Go to Project Settings > Environment Variables
+   - Add the following variables:
+     - GEMINI_API_KEY
+     - NEXT_PUBLIC_APP_URL (your production URL)
+
+4. Deploy:
+   - Click "Deploy"
+   - Vercel will automatically build and deploy your application
+
+## Automatic Deployments
+
+- Pushing to the main branch will trigger automatic deployments
+- Preview deployments are created for pull requests
+- Environment variables are automatically applied to all deployments
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Environment Variables
+
+- `GEMINI_API_KEY`: Your Google Gemini API key
+- `RATE_LIMIT_MAX_REQUESTS`: Maximum number of requests per minute per IP (default: 10)
+- `RATE_LIMIT_WINDOW_MS`: Time window for rate limiting in milliseconds (default: 60000)
+- `NEXT_PUBLIC_APP_URL`: Your application's public URL
+
+## Security Considerations
+
+- API routes are protected with rate limiting
+- Environment variables are properly handled
+- Input validation is implemented
+- Error handling is in place
+
+## Browser Support
+
+The application requires a modern browser with support for:
+- Web Speech API
+- WebSocket connections
+- ES6+ JavaScript features
+
+## Support
+
+For support, please open an issue in the GitHub repository.
