@@ -1,4 +1,4 @@
-import { GoogleGenerativeAI } from '@google/generative-ai';
+import { GoogleGenerativeAI, GenerativeModel } from '@google/generative-ai';
 import { NextResponse } from 'next/server';
 
 // Validate environment variables
@@ -7,8 +7,8 @@ if (!apiKey) {
   throw new Error('Missing GEMINI_API_KEY environment variable');
 }
 
-async function translateWithRetry(model: any, prompt: string, maxRetries = 3): Promise<string | null> {
-  let lastError = null;
+async function translateWithRetry(model: GenerativeModel, prompt: string, maxRetries = 3): Promise<string | null> {
+  let lastError: Error | null = null;
   
   for (let i = 0; i < maxRetries; i++) {
     try {
@@ -17,8 +17,10 @@ async function translateWithRetry(model: any, prompt: string, maxRetries = 3): P
       const text = response.text();
       return text;
     } catch (error) {
-      console.error(`Translation attempt ${i + 1} failed:`, error);
-      lastError = error;
+      if (error instanceof Error) {
+        console.error(`Translation attempt ${i + 1} failed:`, error);
+        lastError = error;
+      }
       // Wait before retrying (exponential backoff)
       await new Promise(resolve => setTimeout(resolve, Math.pow(2, i) * 1000));
     }
@@ -32,7 +34,7 @@ export async function POST(req: Request) {
   try {
     // Input validation
     const body = await req.json();
-    const { text = '', fromLang = '', toLang = '' } = body;
+    const { text = '', toLang = '' } = body;
 
     if (!text?.trim() || !toLang?.trim()) {
       return new NextResponse(JSON.stringify({ 
