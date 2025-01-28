@@ -1,10 +1,10 @@
 {
   "version": 2,
   "functions": {
-    "api/speech": {
+    "app/api/speech/route": {
       "maxDuration": 60
     },
-    "api/whisper": {
+    "app/api/whisper/route": {
       "maxDuration": 60
     }
   }
