@@ -1,7 +1,0 @@
-{
-  "functions": {
-    ".next/server/app/api/**/*": {
-      "maxDuration": 10
-    }
-  }
-} 
