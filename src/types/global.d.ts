@@ -1,6 +1,9 @@
 interface Window {
-  webkitSpeechRecognition: any;
-  SpeechRecognition: any;
+  webkitSpeechRecognition: typeof SpeechRecognition;
+  SpeechRecognition: {
+    new(): SpeechRecognition;
+    prototype: SpeechRecognition;
+  };
 }
 
 interface SpeechRecognitionEvent {
@@ -17,4 +20,17 @@ interface SpeechRecognitionEvent {
 
 interface SpeechRecognitionErrorEvent {
   error: string;
+}
+
+interface SpeechRecognition extends EventTarget {
+  continuous: boolean;
+  interimResults: boolean;
+  lang: string;
+  maxAlternatives: number;
+  start(): void;
+  stop(): void;
+  abort(): void;
+  onresult: ((event: SpeechRecognitionEvent) => void) | null;
+  onerror: ((event: SpeechRecognitionErrorEvent) => void) | null;
+  onend: (() => void) | null;
 } 
